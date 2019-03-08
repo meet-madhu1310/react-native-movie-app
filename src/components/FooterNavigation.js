@@ -33,29 +33,29 @@ class FooterNavigation extends Component {
 
         return(
             <StyleProvider style={getTheme(platform)}>
-            <Container>
-            <Content>
-                <AppComponent />
-            </Content>
-                <Footer style={{height: 25}}>
-                    <FooterTab style={{backgroundColor: '#D82B03'}}>
-                        <Button vertical active={this.state.index === 0} onPress={() => this.switchScreen(0)}>
-                            <Icon name="play" style={{color: '#f2f2f2'}} />
-                            <Text style={{color: '#f2f2f2'}}>Now Playing</Text>
-                        </Button>
+                <Container>
+                    <Content>
+                        <AppComponent />
+                    </Content>
+                    <Footer style={{height: 25}}>
+                        <FooterTab style={{backgroundColor: '#D82B03'}}>
+                            <Button vertical active={this.state.index === 0} onPress={() => this.switchScreen(0)}>
+                                <Icon name="play" style={{color: '#f2f2f2'}} />
+                                <Text style={{color: '#f2f2f2'}}>Now Playing</Text>
+                            </Button>
 
-                        <Button vertical active={this.state.index === 1} onPress={() => this.switchScreen(1)}>
-                            <Icon name="search" style={{color: '#f2f2f2'}} />
-                            <Text style={{color: '#f2f2f2'}}>Search</Text>
-                        </Button>
+                            <Button vertical active={this.state.index === 1} onPress={() => this.switchScreen(1)}>
+                                <Icon name="search" style={{color: '#f2f2f2'}} />
+                                <Text style={{color: '#f2f2f2'}}>Search</Text>
+                            </Button>
 
-                        <Button vertical active={this.state.index === 2} onPress={() => this.switchScreen(2)}>
-                            <Icon name="list" style={{color: '#f2f2f2'}} />
-                            <Text style={{color: '#f2f2f2'}}>List</Text>
-                        </Button>
-                    </FooterTab>
-                </Footer>
-            </Container>
+                            <Button vertical active={this.state.index === 2} onPress={() => this.switchScreen(2)}>
+                                <Icon name="list" style={{color: '#f2f2f2'}} />
+                                <Text style={{color: '#f2f2f2'}}>List</Text>
+                            </Button>
+                        </FooterTab>
+                    </Footer>
+                </Container>
             </StyleProvider>
         )
     }
