@@ -10,21 +10,6 @@ import PeopleTab from './SearchTabs/PeopleTab'
 import TvShowsTab from './SearchTabs/TvShowsTab'
 
 class Search extends Component {
-    state = {
-        results: []
-    }
-
-    fetchData = async() => {
-        const url = 'https://api.themoviedb.org/3/movie/search?api_key=8367b1854dccedcfc9001204de735470&language=en-US&page=1'
-
-        fetch(url)
-            .then(data => data.json())
-                .then(data => {
-                    this.setState({
-                        results: data.results
-                    })
-                })
-    }
 
     render() {
         return (
@@ -32,10 +17,7 @@ class Search extends Component {
                 <Container>
                     <Tabs>
                         <Tab heading={<TabHeading><Icon name="play" style={{color: '#000'}} /><Text style={{marginLeft: 10}}>Movie</Text></TabHeading>}>
-                            
-                                <MovieTab
-                                />
-                            
+                            <MovieTab />
                         </Tab>
 
                         <Tab heading={<TabHeading><Icon name="ios-contact" style={{color: '#000'}} /><Text style={{marginLeft: 10}}>Poeple</Text></TabHeading>}>

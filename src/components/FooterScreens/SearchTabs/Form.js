@@ -8,6 +8,7 @@ const Form = (props) => (
             placeholder = 'search'
             placeholderTextColor = '#000'
             onEndEditing={props.onSubmit}
+            onChangeText={props.onChangeText}
         />
     </View>
 )
