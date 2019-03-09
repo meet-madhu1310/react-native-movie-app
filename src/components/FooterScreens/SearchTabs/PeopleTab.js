@@ -50,9 +50,9 @@ class PeopleTab extends Component {
                                 <View> 
                                     <Image style={{width: 150, height: 150, resizeMode: 'cover'}} source={{uri: `https://image.tmdb.org/t/p/original/${result.profile_path}`}} />
                                 </View>
-                                <View style={{paddingLeft: 10}}>
+                                <View style={{paddingLeft: 10, width: 0, flexGrow: 1}}>
                                     <Text style={styles.personTitle}>{result.name}</Text>
-                                    <Text style={{fontSize: 15, width: 240}} numberOfLines={4} ellipsizeMode='tail'>{result.known_for[0].overview}</Text>
+                                    <Text style={{fontSize: 15}} numberOfLines={4} ellipsizeMode='tail'>{result.known_for[0].overview}</Text>
                                 </View>
                             </View>
                         )

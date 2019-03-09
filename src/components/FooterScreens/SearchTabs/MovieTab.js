@@ -50,9 +50,9 @@ class MovieTab extends Component {
                                 <View> 
                                     <Image style={{width: 150, height: 150, resizeMode: 'cover'}} source={{uri: `https://image.tmdb.org/t/p/original/${result.poster_path}`}} />
                                 </View>
-                                <View style={{paddingLeft: 10}}>
+                                <View style={{paddingLeft: 10, width: 0, flexGrow: 1}}>
                                     <Text style={styles.movieTitle}>{result.title}</Text>
-                                    <Text style={{fontSize: 15, width: 240}} numberOfLines={4} ellipsizeMode='tail'>{result.overview}</Text>
+                                    <Text style={{fontSize: 15}} numberOfLines={4} ellipsizeMode='tail'>{result.overview}</Text>
                                 </View>
                             </View>
                         )

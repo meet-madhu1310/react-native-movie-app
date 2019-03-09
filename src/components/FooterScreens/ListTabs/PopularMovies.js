@@ -41,9 +41,9 @@ class PopularMovies extends Component {
                                 <View> 
                                     <Image style={{width: 150, height: 150, resizeMode: 'cover'}} source={{uri: `https://image.tmdb.org/t/p/original/${result.poster_path}`}} />
                                 </View>
-                                <View style={{paddingLeft: 10}}>
-                                    <Text style={styles.movieTitle}>{result.title}</Text>
-                                    <Text style={{fontSize: 15, width: 240}} numberOfLines={4} ellipsizeMode='tail'>{result.overview}</Text>
+                                <View style={{paddingLeft: 10, width: 0, flexGrow: 1}}>
+                                    <View style={{}}><Text style={styles.movieTitle}>{result.title}</Text></View>
+                                    <Text style={{fontSize: 15}} numberOfLines={4} ellipsizeMode='tail'>{result.overview}</Text>
                                 </View>
                             </View>
                         )

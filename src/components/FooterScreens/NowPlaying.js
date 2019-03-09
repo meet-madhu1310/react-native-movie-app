@@ -1,21 +1,57 @@
 import React, { Component } from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ScrollView, Dimensions, Image } from 'react-native'
+
+const { height } = Dimensions.get('window')
 
 class NowPlaying extends Component {
+    state = {
+        results: [],
+        screenHeight: 0
+    }
+
+    onContentSizeChange = (contentWidth, contentHeight) => {
+        this.setState({ screenHeight: contentHeight });
+    }
+
+    componentDidMount = async() => {
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=8367b1854dccedcfc9001204de735470&language=en-US&page=1`
+
+        fetch(url)
+            .then(data => data.json())
+                .then(data => {
+                    this.setState({
+                        results: data.results
+                    })
+                })
+    }
 
     render() {
-        return(
-            <View style={styles.container}>
-                <Image style={styles.imageStyle} resizeMode={'contain'} source={{uri: 'https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg'}} />
-                        
-                <Text style={styles.titleText}><Text style={{fontWeight: '600'}}>Title:</Text> Title goes here </Text>
+        const scrollEnabled = this.state.screenHeight > height;
 
-                    <View style={styles.section}>
-                        <Text style={{fontSize: 18}}><Text style={{fontWeight: '600'}}>Popularity:</Text> Popularity goes here </Text>
-                        <Text style={{fontSize: 18}}><Text style={{fontWeight: '600'}}>Release Date:</Text> Release date goes here </Text>
+        return(
+            <ScrollView
+                scrollEnabled={scrollEnabled}
+                onContentSizeChange={this.onContentSizeChange}
+                style={{padding: 10, maxWidth: '100%'}}
+            >
+                <View style={styles.container}>
+                    {this.state.results.slice(0 ,1).map((result, i) => {
+                        return (
+                            <View key={i} style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                <Image style={styles.imageStyle} resizeMode={'contain'} source={{uri: `https://image.tmdb.org/t/p/w500/${result.poster_path}`}} />
+                                
+                                <Text style={styles.titleText}><Text style={{fontWeight: '600'}}>Title:</Text> {result.title} </Text>
+
+                                <View style={styles.section}>
+                                    <Text style={{fontSize: 18, marginTop: 10}}><Text style={{fontWeight: '600'}}>Popularity:</Text> {Math.round(result.popularity)} </Text>
+                                    <Text style={{fontSize: 18, marginTop: 10}}><Text style={{fontWeight: '600'}}>Release Date:</Text> {result.release_date} </Text>
+                                    <Text style={{fontSize: 18, marginTop: 10}}><Text style={{fontWeight: '600'}}>Overview:</Text> {result.overview} </Text>
+                                </View>
+                            </View>
+                        )
+                    })} 
                 </View>
-                    
-            </View>
+            </ScrollView>
         )
     }
 
