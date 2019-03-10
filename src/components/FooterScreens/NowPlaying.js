@@ -14,7 +14,8 @@ class NowPlaying extends Component {
     }
 
     componentDidMount = async() => {
-        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=8367b1854dccedcfc9001204de735470&language=en-US&page=1`
+        const number = Math.floor(Math.random() * 10)
+        const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=8367b1854dccedcfc9001204de735470&language=en-US&page=${number}`
 
         fetch(url)
             .then(data => data.json())
@@ -26,7 +27,7 @@ class NowPlaying extends Component {
     }
 
     render() {
-        const scrollEnabled = this.state.screenHeight > height;
+        const scrollEnabled = this.state.screenHeight > height
 
         return(
             <ScrollView
